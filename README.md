@@ -1,4 +1,7 @@
 # <img src="./src/img/icon48.png" align="left" /> The Great-*er* Tab Discarder
+
+> **[中文版本 / Chinese Version](./README_zh.md)** | **English Version (current)**
+
 ```diff
 - The Great Discarder
 + The Great-er Tab Discarder
@@ -29,7 +32,7 @@ so you won't lose them if/when Chrome removes your old unsupported extensions.
 
 <br>
 
-## Get the extension   <img src="./src/img/chrome.svg" height="32" valign="text-bottom" /> <img src="./src/img/edge.svg" height="32" valign="text-bottom" /> <img src="./src/img/brave.svg" height="32" valign="text-bottom" />
+## Get the extension   <img src="./src/img/chrome.svg" height="32" valign="text-bottom" /> <img src="./src/img/edge.svg" height="32" valign="text-bottom" /> <img src="./src/img/brave.svg" height="32" valign="text-bottom" />
 
 
 <img src="./src/img/chrome.svg" height="20" valign="text-bottom" />&nbsp;

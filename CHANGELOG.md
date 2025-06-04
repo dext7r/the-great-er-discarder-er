@@ -1,4 +1,7 @@
 # <img src="./src/img/icon48.png" align="left" /> The Great-*er* Tab Discarder
+
+> **[中文版本 / Chinese Version](./CHANGELOG_zh.md)** | **English Version (current)**
+
 ```diff
 - The Great Discarder
 + The Great-er Tab Discarder
