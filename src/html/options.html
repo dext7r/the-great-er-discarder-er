@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>The Great-er Tab Discarder | General Settings</title>
+  <title data-i18n="optionsTitle">The Great-er Tab Discarder | General Settings</title>
   <link rel='icon' href='/img/icon19.png' id="suspended_icon" />
   <link rel="stylesheet" href="/css/font-awesome.min.css" />
   <link type="text/css" href="/css/style.css" rel="stylesheet" />
@@ -15,16 +15,16 @@
 
     <div class="contentNav">
       <ul>
-        <li><a href="options.html" class="active">General Settings</a></li>
-        <li><a href="options-suspend.html">Suspend Settings</a></li>
-        <li><a href="shortcuts.html">Keyboard Shortcuts</a></li>
-        <li><a href="migrate.html">Migrate Tabs</a></li>
-        <li><a href="about.html">About / Support</a></li>
+        <li><a href="options.html" class="active" data-i18n="generalSettings">General Settings</a></li>
+        <li><a href="options-suspend.html" data-i18n="suspendSettings">Suspend Settings</a></li>
+        <li><a href="shortcuts.html" data-i18n="keyboardShortcuts">Keyboard Shortcuts</a></li>
+        <li><a href="migrate.html" data-i18n="migrateTabs">Migrate Tabs</a></li>
+        <li><a href="about.html" data-i18n="aboutSupport">About / Support</a></li>
       </ul>
     </div>
 
     <div class="content">
-      <h2>General Settings</h2>
+      <h2 data-i18n="generalSettings">General Settings</h2>
       <hr />
 
       <h2>
@@ -33,7 +33,7 @@
           <div class="slider"></div>
           <div class="slider-bg"></div>
         </div>
-        tabs automatically
+        <span data-i18n="tabsAutomatically">tabs automatically</span>
         <i class="icon-help fa fa-question-circle" title="
 Choose to automatically Discard or Suspend your tabs.
 
@@ -45,62 +45,62 @@ Choose to automatically Discard or Suspend your tabs.
       </h2>
 
       <div class="formRow">
-        <label id="timeToDiscardLbl" for="timeToDiscard" class="selectLabel"><span class="modeLabel">Discard</span> tabs after:</label>
+        <label id="timeToDiscardLbl" for="timeToDiscard" class="selectLabel"><span class="modeLabel">Discard</span> <span data-i18n="discardTabsAfter">tabs after:</span></label>
         <select id="timeToDiscard" class="option">
-          <option value="0">Never</option>
+          <option value="0" data-i18n="never">Never</option>
           <option value="0.05">3 seconds</option>
           <option value="0.33">20 seconds</option>
           <option value="1">1 min</option>
-          <option value="5">5 mins</option>
-          <option value="10">10 mins</option>
-          <option value="15">15 mins</option>
-          <option value="30">30 mins</option>
-          <option value="60">1 hour</option>
-          <option value="120">2 hours</option>
-          <option value="240">4 hours</option>
-          <option value="360">6 hours</option>
-          <option value="720">12 hours</option>
-          <option value="1440">1 day</option>
-          <option value="2880">2 days</option>
-          <option value="4320">3 days</option>
+          <option value="5">5 <span data-i18n="minutes">mins</span></option>
+          <option value="10">10 <span data-i18n="minutes">mins</span></option>
+          <option value="15">15 <span data-i18n="minutes">mins</span></option>
+          <option value="30">30 <span data-i18n="minutes">mins</span></option>
+          <option value="60">1 <span data-i18n="hour">hour</span></option>
+          <option value="120">2 <span data-i18n="hours">hours</span></option>
+          <option value="240">4 <span data-i18n="hours">hours</span></option>
+          <option value="360">6 <span data-i18n="hours">hours</span></option>
+          <option value="720">12 <span data-i18n="hours">hours</span></option>
+          <option value="1440">1 <span data-i18n="day">day</span></option>
+          <option value="2880">2 <span data-i18n="days">days</span></option>
+          <option value="4320">3 <span data-i18n="days">days</span></option>
         </select>
       </div>
 
       <div class="formRow autoDiscardOption">
         <input type="checkbox" id="dontDiscardPinned" class="option" />
-        <label for="dontDiscardPinned" class="cbLabel"><span class="overlay"></span>Do not <span class="modeLabel">Discard</span> pinned tabs</label>
+        <label for="dontDiscardPinned" class="cbLabel"><span class="overlay"></span><span data-i18n="doNotDiscardPinned">Do not Discard pinned tabs</span></label>
       </div>
 
       <div class="formRow autoDiscardOption">
         <input type="checkbox" id="dontDiscardAudio" class="option" />
-        <label for="dontDiscardAudio" class="cbLabel"><span class="overlay"></span>Do not <span class="modeLabel">Discard</span> tabs that are playing audio</label>
+        <label for="dontDiscardAudio" class="cbLabel"><span class="overlay"></span><span data-i18n="doNotDiscardAudio">Do not Discard tabs that are playing audio</span></label>
       </div>
 
       <div class="formRow autoDiscardOption">
         <input type="checkbox" id="onlineCheck" class="option" />
-        <label for="onlineCheck" class="cbLabel"><span class="overlay"></span>Only auto-<span class="modeLabel">Discard</span> if connected to the internet</label>
+        <label for="onlineCheck" class="cbLabel"><span class="overlay"></span><span data-i18n="onlineCheck">Only auto-Discard if connected to the internet</span></label>
       </div>
 
       <div class="formRow autoDiscardOption">
         <input type="checkbox" id="batteryCheck" class="option" />
-        <label for="batteryCheck" class="cbLabel"><span class="overlay"></span>Only auto-<span class="modeLabel">Discard</span> if running on battery</label>
+        <label for="batteryCheck" class="cbLabel"><span class="overlay"></span><span data-i18n="batteryCheck">Only auto-Discard if running on battery</span></label>
       </div>
 
-      <h2>Browser Startup</h2>
+      <h2 data-i18n="browserStartup">Browser Startup</h2>
       <div class="formRow">
         <input type="checkbox" id="discardAtStartup" class="option" />
-        <label for="discardAtStartup" class="cbLabel"><span class="overlay"></span>Prevent reloading all tabs
+        <label for="discardAtStartup" class="cbLabel"><span class="overlay"></span><span data-i18n="preventReloading">Prevent reloading all tabs</span>
         </label>
           <i class="icon-help fa fa-question-circle" title="
 By default Chrome lazy reloads all tabs after startup.
 This option prevents the reload while keeping your tabs visible.
 Great for Suspended tabs too!
 "></i>
-        <span class="small" style="margin:0 32px;">( Discards all tabs at startup )</span>
+        <span class="small" style="margin:0 32px;" data-i18n="discardAtStartup">( Discards all tabs at startup )</span>
       </div>
 
       <h2>
-        Whitelist
+        <span data-i18n="whitelist">Whitelist</span>
         <i class="icon-help fa fa-question-circle" title="
 Add the URL of each page you want to whitelist on a new line. For example:
 
@@ -118,24 +118,24 @@ You can also specify regular expressions by enclosing the text in forward slashe
       </h2>
       <textarea id="whitelist" class="option" rows="10" cols="50"></textarea>
 
-      <h2>Other</h2>
+      <h2 data-i18n="other">Other</h2>
       <div class="formRow">
         <input type="checkbox" id="addContextMenu" class="option" />
-        <label for="addContextMenu" class="cbLabel"><span class="overlay"></span>Add The Great-<span class="italic">er</span> Tab Discarder to right-click context menu</label>
+        <label for="addContextMenu" class="cbLabel"><span class="overlay"></span><span data-i18n="addContextMenu">Add The Great-er Tab Discarder to right-click context menu</span></label>
       </div>
       <div class="formRow">
         <input type="checkbox" id="syncOptions" class="option" />
-        <label for="syncOptions" class="cbLabel"><span class="overlay"></span>Sync settings between different systems</label>
-        <div id="syncNote" class="note">Turning this on will overwrite settings on all synced systems</div>
+        <label for="syncOptions" class="cbLabel"><span class="overlay"></span><span data-i18n="syncSettings">Sync settings between different systems</span></label>
+        <div id="syncNote" class="note" data-i18n="syncNote">Turning this on will overwrite settings on all synced systems</div>
       </div>
       <div class="formRow">
         <input type="checkbox" id="addDiscardsMenu" class="option" />
-        <label for="addDiscardsMenu" class="cbLabel"><span class="overlay"></span>Enable debug links on context and popup menus</label>
+        <label for="addDiscardsMenu" class="cbLabel"><span class="overlay"></span><span data-i18n="enableDebugLinks">Enable debug links on context and popup menus</span></label>
       </div>
       <div class="formRow"><br></div>
 
       <hr />
-      <div class="small right">Settings are automatically saved.</div>
+      <div class="small right" data-i18n="settingsAutoSaved">Settings are automatically saved.</div>
 
     </div>
   </div>

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>The Great-er Tab Discarder | About / Support</title>
+  <title data-i18n="aboutTitle">The Great-er Tab Discarder | About / Support</title>
   <link rel='icon' href='/img/icon19.png' id="suspended_icon" />
   <link rel="stylesheet" href="/css/font-awesome.min.css" />
   <link type="text/css" href="/css/style.css" rel="stylesheet" />
@@ -15,11 +15,11 @@
 
     <div class="contentNav">
       <ul>
-        <li><a href="options.html">General Settings</a></li>
-        <li><a href="options-suspend.html">Suspend Settings</a></li>
-        <li><a href="shortcuts.html">Keyboard Shortcuts</a></li>
-        <li><a href="migrate.html">Migrate Tabs</a></li>
-        <li><a href="about.html" class="active">About / Support</a></li>
+        <li><a href="options.html" data-i18n="generalSettings">General Settings</a></li>
+        <li><a href="options-suspend.html" data-i18n="suspendSettings">Suspend Settings</a></li>
+        <li><a href="shortcuts.html" data-i18n="keyboardShortcuts">Keyboard Shortcuts</a></li>
+        <li><a href="migrate.html" data-i18n="migrateTabs">Migrate Tabs</a></li>
+        <li><a href="about.html" class="active" data-i18n="aboutSupport">About / Support</a></li>
       </ul>
     </div>
 
@@ -29,76 +29,76 @@
       <hr />
 
       <p>
-        Help others find the extension<br>
-        Submit a &#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; rating in the App Store(s) if you like the extension!<br>
+        <span data-i18n="helpOthersText">Help others find the extension</span><br>
+        <span data-i18n="submitRatingText">Submit a ⭐⭐⭐⭐⭐ rating in the App Store(s) if you like the extension!</span><br>
         <ul class="unorderedList">
           <li>
-            <a href="https://chromewebstore.google.com/detail/the-great-er-tab-discarder/plpkmjcnhhnpkblimgenmdhghfgghdpp" target="_blank">
+            <a href="https://chromewebstore.google.com/detail/the-great-er-tab-discarder/plpkmjcnhhnpkblimgenmdhghfgghdpp" target="_blank" data-i18n="chromeWebStore">
               Chrome Web Store
             </a>
           </li>
           <li>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/the-greater-tab-discarder/lieejiddoadedggjdkgeellgeeibbnai" target="_blank">
+            <a href="https://microsoftedge.microsoft.com/addons/detail/the-greater-tab-discarder/lieejiddoadedggjdkgeellgeeibbnai" target="_blank" data-i18n="edgeAddons">
               Edge Add-ons
             </a>
           </li>
         </ul>
       </p>
       <p>
-        Please report issues on
+        <span data-i18n="reportIssuesText">Please report issues on</span>
         <a href="https://github.com/rkodey/the-great-er-discarder-er/issues" target="_blank">
-          <i class="fa fa-github" aria-hidden="true"></i> GitHub
+          <i class="fa fa-github" aria-hidden="true"></i> <span data-i18n="github">GitHub</span>
         </a>
       </p>
 
       <hr />
 
-      <h2>What's New</h2>
+      <h2 data-i18n="whatsNewTitle">What's New</h2>
       <p>
-        <div class="bold">v1.4.0 - Jun 2025</div>
+        <div class="bold" data-i18n="version140">v1.4.0 - Jun 2025</div>
         <ul class="unorderedList">
-          <li>New: options for Suspended Tabs</li>
+          <li data-i18n="newOptionsForSuspended">New: options for Suspended Tabs</li>
           <ul class="unorderedList">
-          <li>favicon dimming</li>
-          <li>restore a suspended tab by clicking anywhere on the page</li>
-          <li>restore a suspended tab by Reload</li>
+          <li data-i18n="faviconDimming">favicon dimming</li>
+          <li data-i18n="restoreByClick">restore a suspended tab by clicking anywhere on the page</li>
+          <li data-i18n="restoreByReload">restore a suspended tab by Reload</li>
           </ul>
-          <li>Fix: Suspended tabs from being blocked by Chrome when directly opened</li>
-          <li>Fix: Suspended tab favicons not loading on initial browser launch</li>
+          <li data-i18n="fixSuspendedBlocked">Fix: Suspended tabs from being blocked by Chrome when directly opened</li>
+          <li data-i18n="fixFaviconLoading">Fix: Suspended tab favicons not loading on initial browser launch</li>
           <ul class="unorderedList">
-          <li>NOTE: favicons must be in the browser's cache to load correctly, until I finish adding a local cache</li>
+          <li data-i18n="faviconNote">NOTE: favicons must be in the browser's cache to load correctly, until I finish adding a local cache</li>
           </ul>
-          <li>New: details on the main extension popup</li>
+          <li data-i18n="newPopupDetails">New: details on the main extension popup</li>
           <ul class="unorderedList">
-          <li>Show Discarded and Suspended tab counts</li>
-          <li>Show assigned keyboard shortcuts</li>
+          <li data-i18n="showTabCounts">Show Discarded and Suspended tab counts</li>
+          <li data-i18n="showShortcuts">Show assigned keyboard shortcuts</li>
           </ul>
-          <li>New: automatic options saving, and removed the Save and Cancel buttons</li>
-          <li>Update: background code uses modules for easier integration</li>
+          <li data-i18n="automaticSaving">New: automatic options saving, and removed the Save and Cancel buttons</li>
+          <li data-i18n="backgroundModules">Update: background code uses modules for easier integration</li>
         </ul>
 
         <br>
-        <div class="bold">v1.3.0 - Apr 2025</div>
+        <div class="bold" data-i18n="version130">v1.3.0 - Apr 2025</div>
         <ul class="unorderedList">
-          <li>New: Suspending Tabs has been added</li>
-          <li>New: Suspended Tabs can have their tab titles customized with a prefix</li>
-          <li>Update: Migrating tabs lets you view and select which tabs to Migrate or Convert</li>
-          <li>New: <span class="bold">Tiny Suspender</span> suspend.html tabs can be migrated</li>
-          <li>Fix: Tab migration to handle the different formats better, which should prevent looping</li>
+          <li data-i18n="newSuspending">New: Suspending Tabs has been added</li>
+          <li data-i18n="customTitles">New: Suspended Tabs can have their tab titles customized with a prefix</li>
+          <li data-i18n="updateMigrating">Update: Migrating tabs lets you view and select which tabs to Migrate or Convert</li>
+          <li data-i18n="tinySuspenderSupport">New: <span class="bold">Tiny Suspender</span> suspend.html tabs can be migrated</li>
+          <li data-i18n="migrationFix">Fix: Tab migration to handle the different formats better, which should prevent looping</li>
         </ul>
 
       </p>
       <p>
-        Full change log on
+        <span data-i18n="fullChangeLogText">Full change log on</span>
         <a href="https://github.com/rkodey/the-great-er-discarder-er/blob/main/CHANGELOG.md" target="_blank">
-          <i class="fa fa-github" aria-hidden="true"></i> GitHub
+          <i class="fa fa-github" aria-hidden="true"></i> <span data-i18n="github">GitHub</span>
         </a>
       </p>
 
       <hr />
       <p>
-        This extension uses the indexedDb wrapper
-        <a href="https://github.com/aaronpowell/db.js" target="_blank">db.js</a> written by Aaron Powell.<br />
+        <span data-i18n="extensionUsesDb">This extension uses the indexedDb wrapper</span>
+        <a href="https://github.com/aaronpowell/db.js" target="_blank">db.js</a><span data-i18n="writtenBy"> written by Aaron Powell.</span>
       </p>
 
     </div>

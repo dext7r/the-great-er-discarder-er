@@ -1,8 +1,8 @@
 // @ts-check
 
-import  { favicon }   from  './favicon.js';
-import  { storage }   from  './storage.js';
-import  { log, warn } from  './log.js';
+import { favicon } from './favicon.js';
+import { storage } from './storage.js';
+import { log, warn } from './log.js';
 
 (function () {
 
@@ -11,6 +11,43 @@ import  { log, warn } from  './log.js';
   let currentOptions;
   let targetURL = '';
 
+  /**
+   * 加载i18n文本到页面元素
+   */
+  function loadI18nMessages() {
+    // 加载所有带有data-i18n属性的元素
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+      const messageKey = element.getAttribute('data-i18n');
+      if (messageKey) {
+        const message = chrome.i18n.getMessage(messageKey);
+        if (message) {
+          element.textContent = message;
+        }
+      }
+    });
+
+    // 更新选择器选项
+    updateSelectOptions();
+  }
+
+  /**
+   * 更新选择器选项的文本
+   */
+  function updateSelectOptions() {
+    const select = document.getElementById('customTitle');
+    if (select instanceof HTMLSelectElement) {
+      const options = select.querySelectorAll('option[data-i18n]');
+      options.forEach(option => {
+        const messageKey = option.getAttribute('data-i18n');
+        if (messageKey) {
+          const message = chrome.i18n.getMessage(messageKey);
+          if (message) {
+            option.textContent = message;
+          }
+        }
+      });
+    }
+  }
 
   /**
    * @param {string} id
@@ -43,14 +80,14 @@ import  { log, warn } from  './log.js';
     const fullURL = new URL(document.location.href);
 
     const [hash_query, hash_uri] = fullURL.hash.split(/&uri=/i);
-    const hash_vars   = new URLSearchParams((hash_query || fullURL.search).substring(1));  // Now we have a merged set of vars from both known formats
+    const hash_vars = new URLSearchParams((hash_query || fullURL.search).substring(1));  // Now we have a merged set of vars from both known formats
     // log(...Array.from(hash_vars.entries()));
 
-    const full_title  = hash_vars.get('ttl') || hash_vars.get('title')  || '';
+    const full_title = hash_vars.get('ttl') || hash_vars.get('title') || '';
     const clean_title = full_title.replace(/^((&#\w+;)*\s*)+/, '').replace(/(\s*[|]\s*Suspended)+$/i, '');
-    const emoji       = (full_title.match(/^&#(\w+);/) || [])[1];
+    const emoji = (full_title.match(/^&#(\w+);/) || [])[1];
 
-    const target      = hash_vars.get('uri') || hash_vars.get('url')    || hash_uri;
+    const target = hash_vars.get('uri') || hash_vars.get('url') || hash_uri;
 
     return { fullURL, hash_query, hash_uri, hash_vars, full_title, clean_title, emoji, target };
   }
@@ -113,6 +150,9 @@ import  { log, warn } from  './log.js';
   function initialize() {
     log('initialize', currentOptions);
 
+    // 首先加载i18n文本
+    loadI18nMessages();
+
     updatePage();
 
     if (currentOptions[storage.SUSPEND_RESTORE_RELOAD]) {
@@ -128,13 +168,13 @@ import  { log, warn } from  './log.js';
   }
 
   function updatePage() {
-    const url     = parseURL();
+    const url = parseURL();
     // log('updatePage', url, url.hash_vars.toString());
     if (url.target && url.clean_title) {
       setInnerHTML('suspended_title', `<img id="title_icon" class="favicon" />${url.clean_title ?? ''}`);
       setInnerHTML('suspended_uri', `<a href="${url.target}">${url.target}</a>`);
       setHeadTitle(url.full_title);
-      const sel   = document.getElementById('customTitle');
+      const sel = document.getElementById('customTitle');
       if (sel instanceof HTMLSelectElement && url.emoji) {
         sel.value = url.emoji;
       }
@@ -147,17 +187,17 @@ import  { log, warn } from  './log.js';
    * @param {string} value
    */
   function customTitle(value) {
-    const url     = parseURL();
+    const url = parseURL();
     // log('customTitle', url, url.hash_vars.toString());
     let str_title = '';
     if (!value) {
-      str_title   = url.clean_title;
+      str_title = url.clean_title;
     }
     else if (value === 'Suspended') {
-      str_title   = `${url.clean_title} | Suspended`;
+      str_title = `${url.clean_title} | ${chrome.i18n.getMessage('suspendedTitle')}`;
     }
     else {
-      str_title   = `&#${value}; ${url.clean_title}`;
+      str_title = `&#${value}; ${url.clean_title}`;
     }
 
     setHeadTitle(str_title);
@@ -169,7 +209,7 @@ import  { log, warn } from  './log.js';
     url.hash_vars.set('title', str_title);
     url.hash_vars.set('url', url.target);
 
-    let hash      = `#${url.hash_vars.toString()}`;
+    let hash = `#${url.hash_vars.toString()}`;
     // if (url.hash_uri) hash += `&uri=${url.hash_uri}`;
     document.location.hash = hash;
     // log(hash);

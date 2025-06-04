@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title id="head_title">Suspended</title>
+  <title id="head_title" data-i18n="suspendedTitle">Suspended</title>
   <link rel='icon' href='/img/icon19b.png' id="suspended_favicon" />
   <link rel="stylesheet" href="/css/font-awesome.min.css" />
   <link type="text/css" href="/css/style.css" rel="stylesheet" />
@@ -16,20 +16,20 @@
     <div class="content">
 
       <p></p>
-      <p>This tab is Suspended.</p>
+      <p data-i18n="suspendedPageTitle">This tab is Suspended.</p>
 
       <h2 id="suspended_title"></h2>
       <div id="suspended_uri"></div>
 
-      <div id="no-watermark" class="formRow small">Click the link above restore this tab.</div>
+      <div id="no-watermark" class="formRow small" data-i18n="clickToRestore">Click the link above restore this tab.</div>
 
       <br><br>
       <div></div>
       <div class="formRow">
-        <label id="customTitleLbl" for="customTitle" class="selectLabel">Customize Page Title</label>
+        <label id="customTitleLbl" for="customTitle" class="selectLabel" data-i18n="customizePageTitle">Customize Page Title</label>
         <select id="customTitle" class="option">
           <option value=""></option>
-          <option value="">(default)</option>
+          <option value="" data-i18n="defaultOption">(default)</option>
           <option value="x1F4A4"> &#x1F4A4; ...</option>
           <option value="x1F534"> &#x1F534; ...</option>
           <option value="x1F535"> &#x1F535; ...</option>
@@ -40,7 +40,7 @@
           <option value="x1F7E4"> &#x1F7E4; ...</option>
           <option value="x26AA">  &#x26AA;  ...</option>
           <option value="x26AB">  &#x26AB;  ...</option>
-          <option value="Suspended">... | Suspended</option>
+          <option value="Suspended" data-i18n="suspendedSuffix">... | Suspended</option>
           <!-- <option value="Suspended">&#x2001; ... | Suspended</option> -->
         </select>
       </div>
@@ -55,7 +55,7 @@
 
     </div>
   </div>
-  <div id="watermark">Click anywhere to restore this tab</div>
+  <div id="watermark" data-i18n="watermarkText">Click anywhere to restore this tab</div>
 </body>
 
 </html>

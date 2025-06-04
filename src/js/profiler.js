@@ -1,13 +1,39 @@
 // @ts-check
 
-import  { log, warn } from  './log.js';
+import { log, warn } from './log.js';
 
 (function () {
 
   'use strict';
 
-  const browser   = navigator.userAgent.match(/Chrome\/.*Edg\//i) ? 'edge' : 'chrome';
-  let windows     = {};
+  /**
+   * 加载i18n文本到页面元素
+   */
+  function loadI18nMessages() {
+    // 加载所有带有data-i18n属性的元素
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+      const messageKey = element.getAttribute('data-i18n');
+      if (messageKey) {
+        const message = chrome.i18n.getMessage(messageKey);
+        if (message) {
+          element.textContent = message;
+        }
+      }
+    });
+
+    // 设置页面标题
+    const title = chrome.i18n.getMessage('profilerTitle');
+    if (title) {
+      document.title = title;
+      const gsTitle = document.getElementById('gsTitle');
+      if (gsTitle) {
+        gsTitle.textContent = title;
+      }
+    }
+  }
+
+  const browser = navigator.userAgent.match(/Chrome\/.*Edg\//i) ? 'edge' : 'chrome';
+  let windows = {};
 
 
   /**
@@ -19,20 +45,21 @@ import  { log, warn } from  './log.js';
     // log('generateTabInfo');
 
     const
-      windowId    = info?.windowId      ?? '?',
-      tabId       = info?.tabId         ?? '?',
-      groupId     = info?.groupId > 0   ? info?.groupId : '',
-      groupName   = info?.group?.title,
-      groupColor  = info?.group?.color  ?? '',
-      pinned      = info?.pinned        ? '<i class="fa fa-thumb-tack"></i>' : '',
-      tabTitle    = info?.tab.title     ?? 'unknown',
-      tabStatus   = info?.status        ?? 'unknown',
-      tabURL      = info?.tabUrl        ?? '?',
-      tabTimer    = info?.timerUp       ?? '';
-    const displayMap  = {
-      'audible'   : '<span> <i class="fa fa-volume-up"></i> audible </span>',
-      'discarded' : '<span class="dim"> <i class="fa fa-recycle"></i> discarded </span>',
-      'suspended' : '<span class="dim"> &#x1F4A4; suspended </span>',
+      windowId = info?.windowId ?? '?',
+      tabId = info?.tabId ?? '?',
+      groupId = info?.groupId > 0 ? info?.groupId : '',
+      groupName = info?.group?.title,
+      groupColor = info?.group?.color ?? '',
+      pinned = info?.pinned ? '<i class="fa fa-thumb-tack"></i>' : '',
+      tabTitle = info?.tab.title ?? chrome.i18n.getMessage('unknown') || 'unknown',
+      tabStatus = info?.status ?? chrome.i18n.getMessage('unknown') || 'unknown',
+      tabURL = info?.tabUrl ?? '?',
+      tabTimer = info?.timerUp ?? '';
+
+    const displayMap = {
+      'audible': `<span> <i class="fa fa-volume-up"></i> ${chrome.i18n.getMessage('audible') || 'audible'} </span>`,
+      'discarded': `<span class="dim"> <i class="fa fa-recycle"></i> ${chrome.i18n.getMessage('discarded') || 'discarded'} </span>`,
+      'suspended': `<span class="dim"> &#x1F4A4; ${chrome.i18n.getMessage('suspended') || 'suspended'} </span>`,
     }
 
     // log('5 tab info', groupId, groupName, groupColor);
@@ -45,10 +72,11 @@ import  { log, warn } from  './log.js';
     // let win       = '';
     if (!windows[windowId]) {
       windows[windowId] = 1;
-      const link  = document.createElement('a');
-      link.href   = '#';
-      link.innerText = `Window ${Object.keys(windows).length}`;
-      link.onclick  = () => {
+      const link = document.createElement('a');
+      link.href = '#';
+      const windowText = chrome.i18n.getMessage('windowNumber', [Object.keys(windows).length.toString()]) || `Window ${Object.keys(windows).length}`;
+      link.innerText = windowText;
+      link.onclick = () => {
         chrome.windows.update(windowId, { focused: true });
         return false;
       }
@@ -61,18 +89,18 @@ import  { log, warn } from  './log.js';
 
     // row.insertCell().innerText = tabId;
 
-    const group       = row.insertCell();
-    group.className   = 'center';
-    group.innerHTML   = groupName ? `<span class="group ${browser} ${groupColor}">${groupName}</span>` : groupId;
+    const group = row.insertCell();
+    group.className = 'center';
+    group.innerHTML = groupName ? `<span class="group ${browser} ${groupColor}">${groupName}</span>` : groupId;
 
-    const title       = row.insertCell();
-    title.className   = 'title';
+    const title = row.insertCell();
+    title.className = 'title';
     title.setAttribute('title', tabURL);
-    title.innerText   = tabTitle;
+    title.innerText = tabTitle;
 
-    const timer       = row.insertCell();
-    timer.className   = 'center';
-    timer.innerText   = tabTimer;
+    const timer = row.insertCell();
+    timer.className = 'center';
+    timer.innerText = tabTimer;
 
     row.insertCell().innerHTML = displayMap[tabStatus] || tabStatus;
     row.insertCell().innerHTML = pinned;
@@ -137,7 +165,7 @@ import  { log, warn } from  './log.js';
 
         // log('2 tabGroups', chrome.tabGroups);
         const groupMap = {};
-        chrome.tabGroups?.query({}, function(groups) {
+        chrome.tabGroups?.query({}, function (groups) {
           groups.forEach((group) => {
             groupMap[group.id] = group;
           });
@@ -155,6 +183,9 @@ import  { log, warn } from  './log.js';
 
 
   window.onload = function () {
+
+    // 首先加载i18n文本
+    loadI18nMessages();
 
     const refreshEl = document.getElementById('refreshProfiler');
     if (refreshEl) {

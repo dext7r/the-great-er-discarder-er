@@ -1,6 +1,6 @@
 // @ts-check
 
-import { storage } from  './storage.js';
+import { storage } from './storage.js';
 
 (function () {
 
@@ -8,9 +8,105 @@ import { storage } from  './storage.js';
 
   let currentOptions;
 
+  /**
+   * 加载i18n文本到页面元素
+   */
+  function loadI18nMessages() {
+    // 加载所有带有data-i18n属性的元素
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+      const messageKey = element.getAttribute('data-i18n');
+      if (messageKey) {
+        const message = chrome.i18n.getMessage(messageKey);
+        if (message) {
+          element.textContent = message;
+        }
+      }
+    });
+
+    // 设置页面标题
+    const title = chrome.i18n.getMessage('optionsTitle');
+    if (title) {
+      document.title = title;
+    }
+
+    // 特殊处理select选项中的时间单位
+    updateTimeOptions();
+  }
+
+  /**
+   * 更新时间选项的显示文本
+   */
+  function updateTimeOptions() {
+    const timeSelect = document.getElementById('timeToDiscard');
+    if (timeSelect instanceof HTMLSelectElement) {
+      const options = timeSelect.querySelectorAll('option');
+      options.forEach(option => {
+        const value = option.value;
+        let newText = '';
+
+        switch (value) {
+          case '0':
+            newText = chrome.i18n.getMessage('never');
+            break;
+          case '0.05':
+            newText = '3 seconds';
+            break;
+          case '0.33':
+            newText = '20 seconds';
+            break;
+          case '1':
+            newText = '1 min';
+            break;
+          case '5':
+            newText = `5 ${chrome.i18n.getMessage('minutes')}`;
+            break;
+          case '10':
+            newText = `10 ${chrome.i18n.getMessage('minutes')}`;
+            break;
+          case '15':
+            newText = `15 ${chrome.i18n.getMessage('minutes')}`;
+            break;
+          case '30':
+            newText = `30 ${chrome.i18n.getMessage('minutes')}`;
+            break;
+          case '60':
+            newText = `1 ${chrome.i18n.getMessage('hour')}`;
+            break;
+          case '120':
+            newText = `2 ${chrome.i18n.getMessage('hours')}`;
+            break;
+          case '240':
+            newText = `4 ${chrome.i18n.getMessage('hours')}`;
+            break;
+          case '360':
+            newText = `6 ${chrome.i18n.getMessage('hours')}`;
+            break;
+          case '720':
+            newText = `12 ${chrome.i18n.getMessage('hours')}`;
+            break;
+          case '1440':
+            newText = `1 ${chrome.i18n.getMessage('day')}`;
+            break;
+          case '2880':
+            newText = `2 ${chrome.i18n.getMessage('days')}`;
+            break;
+          case '4320':
+            newText = `3 ${chrome.i18n.getMessage('days')}`;
+            break;
+        }
+
+        if (newText) {
+          option.textContent = newText;
+        }
+      });
+    }
+  }
 
   function initialize() {
     // console.log('options initialize', storage, options);
+
+    // 首先加载i18n文本
+    loadI18nMessages();
 
     for (const element of document.getElementsByClassName('option')) {
       // console.log('initialize', element);
@@ -32,8 +128,40 @@ import { storage } from  './storage.js';
     // console.log('setModeLabels', currentOptions);
     document.querySelectorAll('span.modeLabel').forEach((element) => {
       const current = value === undefined ? currentOptions[storage.SUSPEND_MODE] : value;
-      element.innerHTML = current ? 'Suspend' : 'Discard';
+      element.innerHTML = current ? chrome.i18n.getMessage('suspend') : chrome.i18n.getMessage('discard');
     });
+
+    // 同时更新标签页设置相关的文本
+    updateModeSpecificLabels(current);
+  }
+
+  /**
+   * 更新与模式相关的标签文本
+   * @param {boolean} suspendMode
+   */
+  function updateModeSpecificLabels(suspendMode) {
+    const modeText = suspendMode ? chrome.i18n.getMessage('suspend') : chrome.i18n.getMessage('discard');
+
+    // 更新复选框标签
+    const pinnedLabel = document.querySelector('label[for="dontDiscardPinned"] span[data-i18n="doNotDiscardPinned"]');
+    if (pinnedLabel) {
+      pinnedLabel.textContent = chrome.i18n.getMessage('doNotDiscardPinned', [modeText]);
+    }
+
+    const audioLabel = document.querySelector('label[for="dontDiscardAudio"] span[data-i18n="doNotDiscardAudio"]');
+    if (audioLabel) {
+      audioLabel.textContent = chrome.i18n.getMessage('doNotDiscardAudio', [modeText]);
+    }
+
+    const onlineLabel = document.querySelector('label[for="onlineCheck"] span[data-i18n="onlineCheck"]');
+    if (onlineLabel) {
+      onlineLabel.textContent = chrome.i18n.getMessage('onlineCheck', [modeText]);
+    }
+
+    const batteryLabel = document.querySelector('label[for="batteryCheck"] span[data-i18n="batteryCheck"]');
+    if (batteryLabel) {
+      batteryLabel.textContent = chrome.i18n.getMessage('batteryCheck', [modeText]);
+    }
   }
 
   /**
@@ -121,7 +249,7 @@ import { storage } from  './storage.js';
     for (const element of elements) {
 
       const oldValue = currentOptions[element.id];
-      let   newValue = getOptionValue(element);
+      let newValue = getOptionValue(element);
       // console.log('saveChanges', element.id, pref, newValue);
 
       //clean up whitelist before saving
@@ -157,7 +285,7 @@ import { storage } from  './storage.js';
 
 
   chrome.runtime.sendMessage({ action: 'requestCurrentOptions' }, (optionsObj) => {
-    currentOptions  = optionsObj;
+    currentOptions = optionsObj;
     initialize();
   });
 

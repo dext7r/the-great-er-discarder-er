@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>The Great-er Tab Discarder | Migrate Tabs</title>
+  <title data-i18n="migrateTitle">The Great-er Tab Discarder | Migrate Tabs</title>
   <link rel='icon' href='/img/icon19.png' id="suspended_icon" />
   <link rel="stylesheet" href="/css/font-awesome.min.css" />
   <link type="text/css" href="/css/style.css" rel="stylesheet" />
@@ -15,24 +15,24 @@
 
     <div class="contentNav">
       <ul>
-        <li><a href="options.html">General Settings</a></li>
-        <li><a href="options-suspend.html">Suspend Settings</a></li>
-        <li><a href="shortcuts.html">Keyboard Shortcuts</a></li>
-        <li><a href="migrate.html" class="active">Migrate Tabs</a></li>
-        <li><a href="about.html">About / Support</a></li>
+        <li><a href="options.html" data-i18n="generalSettings">General Settings</a></li>
+        <li><a href="options-suspend.html" data-i18n="suspendSettings">Suspend Settings</a></li>
+        <li><a href="shortcuts.html" data-i18n="keyboardShortcuts">Keyboard Shortcuts</a></li>
+        <li><a href="migrate.html" class="active" data-i18n="migrateTabs">Migrate Tabs</a></li>
+        <li><a href="about.html" data-i18n="aboutSupport">About / Support</a></li>
       </ul>
     </div>
 
     <div class="content">
 
-      <h2>Migrate from other extensions</h2>
+      <h2 data-i18n="migrateFromOther">Migrate from other extensions</h2>
       <hr />
 
       <!-- <div>If you're stuck with one of the "Suspender" extensions that <span class="bold">may soon no longer be supported by Chrome</span>...</div> -->
-      <h2>Make a backup copy of your tabs.</h2>
+      <h2 data-i18n="makeBackup">Make a backup copy of your tabs.</h2>
       <div class="formRow">
-        Some "Suspender" extensions have an export feature built-in.<br>
-        Export a fresh copy.<br>
+        <span data-i18n="exportFeature">Some "Suspender" extensions have an export feature built-in.</span><br>
+        <span data-i18n="exportFresh">Export a fresh copy.</span><br>
       </div>
       <div class="formRow"></div>
       <div class="formRow"></div>
@@ -47,11 +47,11 @@
 
       <div id="notFoundDiv"   class="formRow none">
         <br>
-        If you're using a tab Suspending browser extension, I don't recognizing it.
-        Please <a href="https://github.com/rkodey/the-great-er-discarder-er/issues" target="_blank">submit a new issue</a> and include:
+        <span data-i18n="notFoundExtension">If you're using a tab Suspending browser extension, I don't recognizing it.</span>
+        <span data-i18n="reportIssues">Please</span> <a href="https://github.com/rkodey/the-great-er-discarder-er/issues" target="_blank" data-i18n="submitIssue">submit a new issue</a> <span data-i18n="and">and</span> include:
         <ol class="orderedList">
-          <li>The <span class="bold">name of the extension</span> you're using</li>
-          <li>An <span class="bold">example URL</span> of a suspended tab from your browser</li>
+          <li><span data-i18n="includeExtensionName">The name of the extension</span> <span class="bold">name of the extension</span> <span data-i18n="includeExtensionName">you're using</span></li>
+          <li><span data-i18n="includeExampleURL">An example URL</span> <span class="bold">example URL</span> <span data-i18n="includeExampleURL">of a suspended tab from your browser</span></li>
         </ol>
       </div>
 
@@ -64,16 +64,16 @@
             <tr>
               <td class="center">
                 <br>
-                <div><a href="#" id="migrateBtn" class="btn" style="width:110px;">Migrate</a></div>
-                <div>and re-Suspend</div>
+                <div><a href="#" id="migrateBtn" class="btn" style="width:110px;" data-i18n="migrateBtn">Migrate</a></div>
+                <div data-i18n="andReSuspend">and re-Suspend</div>
               </td>
               <td style="vertical-align: middle;">
-                or
+                <span data-i18n="or">or</span>
               </td>
               <td class="center">
                 <br>
-                <div><a href="#" id="discardBtn" class="btn" style="width:110px;">Discard</a></div>
-                <div>to native Discard</div>
+                <div><a href="#" id="discardBtn" class="btn" style="width:110px;" data-i18n="discardBtn">Discard</a></div>
+                <div data-i18n="toNativeDiscard">to native Discard</div>
               </td>
             </tr>
           </table>
@@ -81,11 +81,11 @@
         <hr />
 
         <div>
-          <h2>What's "Migrate" vs "Convert" ?</h2>
-          <div class="formRow">Migrate simulates Suspended tabs like you might be used to.  It's old-school.</div>
+          <h2 data-i18n="migrateVsConvert">What's "Migrate" vs "Convert" ?</h2>
+          <div class="formRow"><span data-i18n="migrateExplanation">Migrate simulates Suspended tabs like you might be used to.  It's old-school.</span></div>
           <div class="formRow">
-            Convert will un-Suspend your tabs, then tell your browser to immediately Discard them.
-            <span class="bold">This is the preferred option</span>, native to the browser, but removes your "Suspended" placeholder page.
+            <span data-i18n="convertExplanation">Convert will un-Suspend your tabs, then tell your browser to immediately Discard them.</span>
+            <span class="bold" data-i18n="preferredOption">This is the preferred option</span><span data-i18n="removesPlaceholder">, native to the browser, but removes your "Suspended" placeholder page.</span>
           </div>
         </div>
 

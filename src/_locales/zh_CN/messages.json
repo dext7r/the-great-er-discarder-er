@@ -1,0 +1,603 @@
+{
+  "extensionName": {
+    "message": "超强标签页丢弃器"
+  },
+  "extensionDescription": {
+    "message": "与最新Chrome兼容！通过释放非活跃标签页占用的内存和资源，帮助您的浏览器加载和运行更快。"
+  },
+  "discardActiveTab": {
+    "message": "丢弃当前标签页"
+  },
+  "suspendActiveTab": {
+    "message": "暂停当前标签页"
+  },
+  "discardAllTabs": {
+    "message": "丢弃当前窗口的所有标签页"
+  },
+  "reloadAllTabs": {
+    "message": "重新加载当前窗口的所有标签页"
+  },
+  "discardAllWindows": {
+    "message": "丢弃所有窗口的标签页"
+  },
+  "reloadAllWindows": {
+    "message": "重新加载所有窗口的标签页"
+  },
+  "popupTitle": {
+    "message": "超强标签页丢弃器 | 弹窗"
+  },
+  "currentStatus": {
+    "message": "[当前状态]"
+  },
+  "discardThisTab": {
+    "message": "丢弃此标签页"
+  },
+  "suspendThisTab": {
+    "message": "暂停此标签页"
+  },
+  "pauseDiscarding": {
+    "message": "暂停"
+  },
+  "pauseDiscardingThisTab": {
+    "message": "此标签页的"
+  },
+  "neverDiscard": {
+    "message": "永不"
+  },
+  "neverDiscardThisSite": {
+    "message": "此网站"
+  },
+  "discardSelectedTabs": {
+    "message": "丢弃选中的标签页"
+  },
+  "suspendSelectedTabs": {
+    "message": "暂停选中的标签页"
+  },
+  "reloadSelectedTabs": {
+    "message": "重新加载选中的标签页"
+  },
+  "thisWindow": {
+    "message": "此窗口"
+  },
+  "discardAllEligible": {
+    "message": "丢弃所有符合条件的标签页"
+  },
+  "discardAllOther": {
+    "message": "丢弃所有其他标签页"
+  },
+  "reloadAllDiscarded": {
+    "message": "重新加载所有已丢弃的标签页"
+  },
+  "settings": {
+    "message": "设置"
+  },
+  "tabProfiler": {
+    "message": "标签页分析器"
+  },
+  "reload": {
+    "message": "重新加载"
+  },
+  "statusNormal": {
+    "message": "此标签页可被自动$MODE$。",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "丢弃"
+      }
+    }
+  },
+  "statusSpecial": {
+    "message": "此标签页无法被$MODE$。",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "丢弃"
+      }
+    }
+  },
+  "statusWhitelisted": {
+    "message": "网站已加入白名单。<a href=\"#\">从白名单中移除</a>"
+  },
+  "statusAudible": {
+    "message": "此标签页正在播放音频。"
+  },
+  "statusPinned": {
+    "message": "此标签页已被固定。"
+  },
+  "statusTempWhitelist": {
+    "message": "标签页$MODE$已暂停。<a href=\"#\">取消暂停</a>",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "丢弃"
+      }
+    }
+  },
+  "statusNever": {
+    "message": "自动$MODE$已禁用。",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "丢弃"
+      }
+    }
+  },
+  "statusNoConnectivity": {
+    "message": "无网络连接。"
+  },
+  "statusCharging": {
+    "message": "已连接电源。"
+  },
+  "skipText": {
+    "message": "跳过$EXCLUDES$标签页",
+    "placeholders": {
+      "excludes": {
+        "content": "$1",
+        "example": "固定和音频"
+      }
+    }
+  },
+  "skipPinned": {
+    "message": "固定"
+  },
+  "skipAudio": {
+    "message": "音频"
+  },
+  "and": {
+    "message": "和"
+  },
+  "contextMenuDiscardTab": {
+    "message": "丢弃此标签页"
+  },
+  "contextMenuPauseDiscard": {
+    "message": "暂停丢弃此标签页"
+  },
+  "contextMenuNeverDiscard": {
+    "message": "永不丢弃此网站"
+  },
+  "contextMenuDiscardOthers": {
+    "message": "丢弃所有其他标签页"
+  },
+  "contextMenuRestoreAll": {
+    "message": "恢复所有已丢弃的标签页"
+  },
+  "optionsTitle": {
+    "message": "超强标签页丢弃器 | 常规设置"
+  },
+  "generalSettings": {
+    "message": "常规设置"
+  },
+  "suspendSettings": {
+    "message": "暂停设置"
+  },
+  "keyboardShortcuts": {
+    "message": "键盘快捷键"
+  },
+  "migrateTabs": {
+    "message": "迁移标签页"
+  },
+  "aboutSupport": {
+    "message": "关于/支持"
+  },
+  "tabsAutomatically": {
+    "message": "标签页自动"
+  },
+  "discardTabsAfter": {
+    "message": "标签页的时间："
+  },
+  "never": {
+    "message": "从不"
+  },
+  "minutes": {
+    "message": "分钟"
+  },
+  "hour": {
+    "message": "小时"
+  },
+  "hours": {
+    "message": "小时"
+  },
+  "day": {
+    "message": "天"
+  },
+  "days": {
+    "message": "天"
+  },
+  "doNotDiscardPinned": {
+    "message": "不要$MODE$固定的标签页",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "丢弃"
+      }
+    }
+  },
+  "doNotDiscardAudio": {
+    "message": "不要$MODE$正在播放音频的标签页",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "丢弃"
+      }
+    }
+  },
+  "onlineCheck": {
+    "message": "仅在连接互联网时自动$MODE$",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "丢弃"
+      }
+    }
+  },
+  "batteryCheck": {
+    "message": "仅在使用电池时自动$MODE$",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "丢弃"
+      }
+    }
+  },
+  "browserStartup": {
+    "message": "浏览器启动"
+  },
+  "preventReloading": {
+    "message": "防止重新加载所有标签页"
+  },
+  "discardAtStartup": {
+    "message": "（在启动时丢弃所有标签页）"
+  },
+  "whitelist": {
+    "message": "白名单"
+  },
+  "other": {
+    "message": "其他"
+  },
+  "addContextMenu": {
+    "message": "将超强标签页丢弃器添加到右键菜单"
+  },
+  "syncSettings": {
+    "message": "在不同系统间同步设置"
+  },
+  "syncNote": {
+    "message": "启用此功能将覆盖所有同步系统上的设置"
+  },
+  "enableDebugLinks": {
+    "message": "在上下文菜单和弹窗菜单中启用调试链接"
+  },
+  "settingsAutoSaved": {
+    "message": "设置会自动保存。"
+  },
+  "suspendedTitle": {
+    "message": "已暂停"
+  },
+  "suspendedPageTitle": {
+    "message": "此标签页已暂停。"
+  },
+  "clickToRestore": {
+    "message": "点击上方链接恢复此标签页。"
+  },
+  "customizePageTitle": {
+    "message": "自定义页面标题"
+  },
+  "defaultOption": {
+    "message": "（默认）"
+  },
+  "suspendedSuffix": {
+    "message": "... | 已暂停"
+  },
+  "watermarkText": {
+    "message": "点击任意位置恢复此标签页"
+  },
+  "discard": {
+    "message": "丢弃"
+  },
+  "suspend": {
+    "message": "暂停"
+  },
+  "aboutTitle": {
+    "message": "超强标签页丢弃器 | 关于/支持"
+  },
+  "helpOthersFind": {
+    "message": "帮助其他人发现此扩展"
+  },
+  "submitRating": {
+    "message": "如果您喜欢此扩展，请在应用商店提交⭐⭐⭐⭐⭐评分！"
+  },
+  "chromeWebStore": {
+    "message": "Chrome网上应用店"
+  },
+  "edgeAddons": {
+    "message": "Edge加载项"
+  },
+  "reportIssues": {
+    "message": "请在以下位置报告问题"
+  },
+  "whatsNew": {
+    "message": "更新内容"
+  },
+  "fullChangeLog": {
+    "message": "完整变更日志在"
+  },
+  "shortcutsTitle": {
+    "message": "超强标签页丢弃器 | 键盘快捷键"
+  },
+  "shortcutsDescription": {
+    "message": "在Chrome的扩展设置中配置键盘快捷键"
+  },
+  "openChromeShortcuts": {
+    "message": "打开Chrome快捷键设置"
+  },
+  "migrateTitle": {
+    "message": "超强标签页丢弃器 | 迁移标签页"
+  },
+  "migrateDescription": {
+    "message": "从其他扩展迁移暂停的标签页"
+  },
+  "suspendSettingsTitle": {
+    "message": "超强标签页丢弃器 | 暂停页面设置"
+  },
+  "suspendedPageSettings": {
+    "message": "暂停页面设置"
+  },
+  "clickAnywhere": {
+    "message": "点击暂停页面的任意位置来恢复标签页"
+  },
+  "reloadSuspended": {
+    "message": "重新加载暂停页面来恢复标签页"
+  },
+  "modifyFavicon": {
+    "message": "修改图标："
+  },
+  "none": {
+    "message": "无"
+  },
+  "dim": {
+    "message": "变暗"
+  },
+  "moreComing": {
+    "message": "更多功能即将推出！"
+  },
+  "migrateFromOther": {
+    "message": "从其他扩展迁移"
+  },
+  "makeBackup": {
+    "message": "为您的标签页制作备份副本。"
+  },
+  "exportFeature": {
+    "message": "一些'暂停器'扩展内置了导出功能。"
+  },
+  "exportFresh": {
+    "message": "导出一份新副本。"
+  },
+  "notFoundExtension": {
+    "message": "如果您正在使用标签页暂停浏览器扩展，我无法识别它。"
+  },
+  "submitIssue": {
+    "message": "提交新问题"
+  },
+  "includeExtensionName": {
+    "message": "您使用的扩展的名称"
+  },
+  "includeExampleURL": {
+    "message": "来自您浏览器的暂停标签页示例URL"
+  },
+  "migrateBtn": {
+    "message": "迁移"
+  },
+  "andReSuspend": {
+    "message": "并重新暂停"
+  },
+  "or": {
+    "message": "或"
+  },
+  "discardBtn": {
+    "message": "丢弃"
+  },
+  "toNativeDiscard": {
+    "message": "为原生丢弃"
+  },
+  "migrateVsConvert": {
+    "message": "什么是'迁移'与'转换'？"
+  },
+  "migrateExplanation": {
+    "message": "迁移模拟您可能习惯的暂停标签页。这是老式方法。"
+  },
+  "convertExplanation": {
+    "message": "转换将取消暂停您的标签页，然后告诉您的浏览器立即丢弃它们。"
+  },
+  "preferredOption": {
+    "message": "这是首选选项"
+  },
+  "removesPlaceholder": {
+    "message": "，这是浏览器原生功能，但会移除您的'已暂停'占位页面。"
+  },
+  "remapKeys": {
+    "message": "重新映射按键"
+  },
+  "notSet": {
+    "message": "（未设置）"
+  },
+  "profilerTitle": {
+    "message": "超强标签页丢弃器 | 分析器"
+  },
+  "refresh": {
+    "message": "刷新"
+  },
+  "enableTabGroups": {
+    "message": "启用标签页组"
+  },
+  "window": {
+    "message": "窗口"
+  },
+  "tabGroup": {
+    "message": "标签页组"
+  },
+  "title": {
+    "message": "标题"
+  },
+  "timer": {
+    "message": "计时器 (秒)"
+  },
+  "status": {
+    "message": "状态"
+  },
+  "pin": {
+    "message": "固定"
+  },
+  "helpOthersText": {
+    "message": "帮助其他人发现此扩展"
+  },
+  "submitRatingText": {
+    "message": "如果您喜欢此扩展，请在应用商店提交⭐⭐⭐⭐⭐评分！"
+  },
+  "reportIssuesText": {
+    "message": "请在以下位置报告问题"
+  },
+  "github": {
+    "message": "GitHub"
+  },
+  "whatsNewTitle": {
+    "message": "更新内容"
+  },
+  "version140": {
+    "message": "v1.4.0 - 2025年6月"
+  },
+  "newOptionsForSuspended": {
+    "message": "新增：暂停标签页选项"
+  },
+  "faviconDimming": {
+    "message": "图标变暗"
+  },
+  "restoreByClick": {
+    "message": "通过点击页面任意位置恢复暂停的标签页"
+  },
+  "restoreByReload": {
+    "message": "通过重新加载恢复暂停的标签页"
+  },
+  "fixSuspendedBlocked": {
+    "message": "修复：暂停标签页被Chrome直接打开时阻止的问题"
+  },
+  "fixFaviconLoading": {
+    "message": "修复：浏览器启动时暂停标签页图标无法加载的问题"
+  },
+  "faviconNote": {
+    "message": "注意：图标必须在浏览器缓存中才能正确加载，直到我完成本地缓存功能"
+  },
+  "newPopupDetails": {
+    "message": "新增：主扩展弹窗详细信息"
+  },
+  "showTabCounts": {
+    "message": "显示已丢弃和已暂停的标签页计数"
+  },
+  "showShortcuts": {
+    "message": "显示已分配的键盘快捷键"
+  },
+  "automaticSaving": {
+    "message": "新增：自动保存选项，并移除了保存和取消按钮"
+  },
+  "backgroundModules": {
+    "message": "更新：后台代码使用模块以便于集成"
+  },
+  "version130": {
+    "message": "v1.3.0 - 2025年4月"
+  },
+  "newSuspending": {
+    "message": "新增：已添加暂停标签页功能"
+  },
+  "customTitles": {
+    "message": "新增：暂停标签页可以用前缀自定义标题"
+  },
+  "updateMigrating": {
+    "message": "更新：迁移标签页功能可以查看和选择要迁移或转换的标签页"
+  },
+  "tinySuspenderSupport": {
+    "message": "新增：可以迁移Tiny Suspender的suspend.html标签页"
+  },
+  "migrationFix": {
+    "message": "修复：标签页迁移更好地处理不同格式，防止循环"
+  },
+  "fullChangeLogText": {
+    "message": "完整变更日志在"
+  },
+  "extensionUsesDb": {
+    "message": "此扩展使用indexedDb包装器"
+  },
+  "writtenBy": {
+    "message": "，由Aaron Powell编写。"
+  },
+  "audible": {
+    "message": "音频"
+  },
+  "discarded": {
+    "message": "已丢弃"
+  },
+  "suspended": {
+    "message": "已暂停"
+  },
+  "unknown": {
+    "message": "未知"
+  },
+  "windowNumber": {
+    "message": "窗口 $NUMBER$",
+    "placeholders": {
+      "number": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "foundTabs": {
+    "message": "找到 $COUNT$ 个暂停的标签页",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      },
+      "plural": {
+        "content": "$2",
+        "example": ""
+      }
+    }
+  },
+  "fromExtensions": {
+    "message": "来自 $COUNT$ 个扩展",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "2"
+      },
+      "plural": {
+        "content": "$2",
+        "example": ""
+      }
+    }
+  },
+  "migrateCount": {
+    "message": "迁移 $COUNT$ 个标签页",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      },
+      "plural": {
+        "content": "$2",
+        "example": ""
+      }
+    }
+  },
+  "convertCount": {
+    "message": "转换 $COUNT$ 个标签页",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      },
+      "plural": {
+        "content": "$2",
+        "example": ""
+      }
+    }
+  }
+}

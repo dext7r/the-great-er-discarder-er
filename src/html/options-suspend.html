@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>The Great-er Tab Discarder | Suspended Page Settings</title>
+  <title data-i18n="suspendSettingsTitle">The Great-er Tab Discarder | Suspended Page Settings</title>
   <link rel='icon' href='/img/icon19.png' id="suspended_icon" />
   <link rel="stylesheet" href="/css/font-awesome.min.css" />
   <link type="text/css" href="/css/style.css" rel="stylesheet" />
@@ -15,44 +15,44 @@
 
     <div class="contentNav">
       <ul>
-        <li><a href="options.html">General Settings</a></li>
-        <li><a href="options-suspend.html" class="active">Suspend Settings</a></li>
-        <li><a href="shortcuts.html">Keyboard Shortcuts</a></li>
-        <li><a href="migrate.html">Migrate Tabs</a></li>
-        <li><a href="about.html">About / Support</a></li>
+        <li><a href="options.html" data-i18n="generalSettings">General Settings</a></li>
+        <li><a href="options-suspend.html" class="active" data-i18n="suspendSettings">Suspend Settings</a></li>
+        <li><a href="shortcuts.html" data-i18n="keyboardShortcuts">Keyboard Shortcuts</a></li>
+        <li><a href="migrate.html" data-i18n="migrateTabs">Migrate Tabs</a></li>
+        <li><a href="about.html" data-i18n="aboutSupport">About / Support</a></li>
       </ul>
     </div>
 
     <div class="content">
-      <h2>Suspended Page Settings</h2>
+      <h2 data-i18n="suspendedPageSettings">Suspended Page Settings</h2>
       <hr />
 
 
       <div class="formRow">
         <input type="checkbox" id="suspendRestoreClickAnywhere" class="option" />
-        <label for="suspendRestoreClickAnywhere" class="cbLabel"><span class="overlay"></span>Click anywhere on the Suspended page to restore it</label>
+        <label for="suspendRestoreClickAnywhere" class="cbLabel"><span class="overlay"></span><span data-i18n="clickAnywhere">Click anywhere on the Suspended page to restore it</span></label>
       </div>
       <div class="formRow">
         <input type="checkbox" id="suspendRestoreReload" class="option" />
-        <label for="suspendRestoreReload" class="cbLabel"><span class="overlay"></span>Reload the Suspended page to restore it</label>
+        <label for="suspendRestoreReload" class="cbLabel"><span class="overlay"></span><span data-i18n="reloadSuspended">Reload the Suspended page to restore it</span></label>
       </div>
       <div class="formRow"><br></div>
       <div class="formRow">
-        <label for="suspendFavicon" class="selectLabel">Modify the favicon:</label>
+        <label for="suspendFavicon" class="selectLabel" data-i18n="modifyFavicon">Modify the favicon:</label>
         <select id="suspendFavicon" class="option">
-          <option value="">None</option>
-          <option value="dim">Dim</option>
+          <option value="" data-i18n="none">None</option>
+          <option value="dim" data-i18n="dim">Dim</option>
         </select>
       </div>
       <div class="formRow"><br></div>
 
       <div class="formRow">
-        More coming soon!
+        <span data-i18n="moreComing">More coming soon!</span>
       </div>
       <div class="formRow"><br></div>
 
       <hr />
-      <div class="small right">Settings are automatically saved.</div>
+      <div class="small right" data-i18n="settingsAutoSaved">Settings are automatically saved.</div>
 
     </div>
   </div>

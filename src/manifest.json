@@ -1,15 +1,29 @@
 {
   "manifest_version": 3,
-  "name": "The Great-er Tab Discarder",
-  "description": "Compatible with latest Chrome! Helps your browser load and run faster by freeing up memory and resources used by old inactive tabs.",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
   "version": "1.4.0",
-
-  "permissions": [ "tabs", "storage", "contextMenus", "alarms", "favicon" ],
-  "optional_permissions": ["tabGroups"],
+  "default_locale": "en",
+  "permissions": [
+    "tabs",
+    "storage",
+    "contextMenus",
+    "alarms",
+    "favicon"
+  ],
+  "optional_permissions": [
+    "tabGroups"
+  ],
   "web_accessible_resources": [
     {
-      "resources": ["html/suspended.html", "img/*", "_favicon/*"],
-      "matches": ["<all_urls>"]
+      "resources": [
+        "html/suspended.html",
+        "img/*",
+        "_favicon/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ],
   "background": {
@@ -17,7 +31,7 @@
     "type": "module"
   },
   "action": {
-    "default_title": "The Great-er Tab Discarder",
+    "default_title": "__MSG_extensionName__",
     "default_icon": "img/icon19.png",
     "default_popup": "html/popup.html"
   },
@@ -29,28 +43,30 @@
   },
   "incognito": "split",
   "minimum_chrome_version": "108",
-
   "commands": {
     "1-discard-tab": {
-      "description": "Discard active tab",
-      "suggested_key": { "default": "Ctrl+Shift+D" }
+      "description": "__MSG_discardActiveTab__",
+      "suggested_key": {
+        "default": "Ctrl+Shift+D"
+      }
     },
     "2-suspend-tab": {
-      "description": "Suspend active tab",
-      "suggested_key": { "default": "Ctrl+Shift+S" }
+      "description": "__MSG_suspendActiveTab__",
+      "suggested_key": {
+        "default": "Ctrl+Shift+S"
+      }
     },
     "3-discard-active-window": {
-      "description": "Discard all tabs in active window"
+      "description": "__MSG_discardAllTabs__"
     },
     "4-reload-active-window": {
-      "description": "Reload all tabs in active window"
+      "description": "__MSG_reloadAllTabs__"
     },
     "5-discard-all-windows": {
-      "description": "Discard all tabs in all windows"
+      "description": "__MSG_discardAllWindows__"
     },
     "6-reload-all-windows": {
-      "description": "Reload all tabs in all windows"
+      "description": "__MSG_reloadAllWindows__"
     }
   }
-
 }

@@ -1,26 +1,26 @@
 // @ts-check
 /// <reference lib="webworker" />
 
-import  { storage }           from './storage.js';
-import  { tabStates }         from './tabStates.js';
-import  { log, warn, DEBUG }  from './log.js';
+import { storage } from './storage.js';
+import { tabStates } from './tabStates.js';
+import { log, warn, DEBUG } from './log.js';
 
 'use strict';
 
-const CURRENT_TAB_ID      = 'currentTabId';
-const PREVIOUS_TAB_ID     = 'previousTabId';
+const CURRENT_TAB_ID = 'currentTabId';
+const PREVIOUS_TAB_ID = 'previousTabId';
 const TEMPORARY_WHITELIST = 'temporaryWhitelist';
 
 const extensionActiveIcon = '/img/icon19.png';
 const extensionPausedIcon = '/img/icon19b.png';
 
-const noop                = function() {};
+const noop = function () { };
 
 log('Extension loading...');
 
 // initialize global state vars
-var chargingMode          = false;
-var startupDone           = false;
+var chargingMode = false;
+var startupDone = false;
 
 // chrome.alarms.getAll(function (alarms) {
 //   log(alarms);
@@ -36,7 +36,7 @@ if (typeof self != 'undefined' && self instanceof ServiceWorkerGlobalScope) {
   });
 }
 
-chrome.runtime.onInstalled.addListener(function() {
+chrome.runtime.onInstalled.addListener(function () {
   log('2 runtime.onInstalled');
   // Fired when the extension is first installed, when the extension is updated to a new version, and when Chrome is updated to a new version.
   // Fired when an unpacked extension is reloaded
@@ -79,7 +79,7 @@ chrome.runtime.onStartup.addListener(function () {
   chrome.alarms.clearAll(function () {
     asyncSessionSet({ [TEMPORARY_WHITELIST]: {} });
     tabStates.clearTabStates(function () {
-      chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         if (tabs.length > 0) {
           asyncSessionSet({ [CURRENT_TAB_ID]: tabs[0].id })
         }
@@ -109,7 +109,7 @@ chrome.alarms.onAlarm.addListener(function (alarm) {
 const getBattery = navigator.getBattery;
 //listen for changes to battery state
 if (getBattery) {
-  getBattery().then(function(battery) {
+  getBattery().then(function (battery) {
 
     chargingMode = battery.charging;
     battery.onchargingchange = function () {
@@ -133,25 +133,25 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   // log(`onUpdated: ${tab.index}, ${tab.id}, Tab Status ${tab.status}`);
 
   // tabStates.getTabState(tabId, function (previousTabState) {
-    chrome.alarms.get(String(tab.id), (alarm) => {
+  chrome.alarms.get(String(tab.id), (alarm) => {
 
-      // log('previousTabState', previousTabState);
+    // log('previousTabState', previousTabState);
 
-      if (!alarm && changeInfo.status === 'complete') {
-        resetTabTimer(tab);
-      }
+    if (!alarm && changeInfo.status === 'complete') {
+      resetTabTimer(tab);
+    }
 
-      //check for tab playing audio
-      else if (changeInfo.audible === false) {
-        log('tab finished playing audio. restarting timer: ' + tab.id);
-        resetTabTimer(tab);
-      }
-      // else if (!tab.audible && previousTabState && previousTabState.audible) {
-      //   resetTabTimer(tab);
-      // }
+    //check for tab playing audio
+    else if (changeInfo.audible === false) {
+      log('tab finished playing audio. restarting timer: ' + tab.id);
+      resetTabTimer(tab);
+    }
+    // else if (!tab.audible && previousTabState && previousTabState.audible) {
+    //   resetTabTimer(tab);
+    // }
 
-      // tabStates.setTabState(tab);
-    });
+    // tabStates.setTabState(tab);
+  });
   // });
 });
 
@@ -210,7 +210,7 @@ function startupDiscard() {
 // setTimeout(function() { startupDiscard(true); }, 5000);
 
 async function asyncSessionGet(name) {
-  const ret = ( await chrome.storage.session.get([ name ]) ) [ name ];
+  const ret = (await chrome.storage.session.get([name]))[name];
   // log('asyncSessionGet', name, ret);
   return ret;
 }
@@ -235,39 +235,39 @@ function isSpecialTab(tab) {
   const url = tab.url ?? '';
 
   return (
-      url.startsWith('chrome-devtools:') ||
-      url.startsWith('chrome-extension:') ||
-      url.startsWith('chrome:') ||
-      url.startsWith('edge:') ||
-      url.startsWith('extension:') ||
-      url.startsWith('file:') ||
-      url.indexOf('chrome.google.com/webstore') >= 0
+    url.startsWith('chrome-devtools:') ||
+    url.startsWith('chrome-extension:') ||
+    url.startsWith('chrome:') ||
+    url.startsWith('edge:') ||
+    url.startsWith('extension:') ||
+    url.startsWith('file:') ||
+    url.indexOf('chrome.google.com/webstore') >= 0
   );
 }
 
 const openTabManager = {
-  'options'   : { tabId: 0, url: chrome.runtime.getURL('html/options.html') },
-  'profiler'  : { tabId: 0, url: chrome.runtime.getURL('html/profiler.html') },
-  'discards'  : { tabId: 0, url: 'chrome://discards/' },
+  'options': { tabId: 0, url: chrome.runtime.getURL('html/options.html') },
+  'profiler': { tabId: 0, url: chrome.runtime.getURL('html/profiler.html') },
+  'discards': { tabId: 0, url: 'chrome://discards/' },
 }
 
 /**
  * @param {keyof openTabManager} name
  */
 function createTab(name) {
-  chrome.tabs.create( { url:openTabManager[name].url }, function(tab) {
+  chrome.tabs.create({ url: openTabManager[name].url }, function (tab) {
     // log('createTab', openTabManager[name].tabId, tab.id);
     openTabManager[name].tabId = tab.id ?? 0;
-  } );
+  });
 }
 
 /**
  * @param {keyof openTabManager} name
  */
 function openTab(name) {
-  if(openTabManager[name].tabId) {
+  if (openTabManager[name].tabId) {
     // log('openTab', openTabManager[name].tabId);
-    chrome.tabs.update(openTabManager[name].tabId, {active:true}, function(tab) {
+    chrome.tabs.update(openTabManager[name].tabId, { active: true }, function (tab) {
       if (chrome.runtime.lastError || !tab) {
         createTab(name);
       }
@@ -334,26 +334,26 @@ function testForMatch(whitelistItem, word) {
   if (whitelistItem.length < 1) {
     return false;
 
-  //test for regex ( must be of the form /foobar/ )
+    //test for regex ( must be of the form /foobar/ )
   } else if (whitelistItem.length > 2 &&
     whitelistItem.indexOf('/') === 0 &&
     whitelistItem.indexOf('/', whitelistItem.length - 1) !== -1) {
 
-  whitelistItem = whitelistItem.substring(1, whitelistItem.length - 1);
-  try {
-    new RegExp(whitelistItem);
-  } catch(e) {
-    return false;
-  }
-  return new RegExp(whitelistItem).test(word);
+    whitelistItem = whitelistItem.substring(1, whitelistItem.length - 1);
+    try {
+      new RegExp(whitelistItem);
+    } catch (e) {
+      return false;
+    }
+    return new RegExp(whitelistItem).test(word);
 
-  // test as substring
+    // test as substring
   } else {
     return word.indexOf(whitelistItem) >= 0;
   }
 }
 
-function removeFromWhitelist (entry, callback) {
+function removeFromWhitelist(entry, callback) {
   log('removeFromWhitelist', entry);
   storage.getOption(storage.WHITELIST, function (whitelist) {
 
@@ -368,7 +368,7 @@ function removeFromWhitelist (entry, callback) {
   });
 }
 
-function addToWhitelist (entry, callback) {
+function addToWhitelist(entry, callback) {
   log('addToWhitelist', entry);
   storage.getOption(storage.WHITELIST, function (whitelist) {
     whitelist = whitelist ? whitelist + '\n' + entry : entry;
@@ -377,7 +377,7 @@ function addToWhitelist (entry, callback) {
   });
 }
 
-function cleanWhitelist (whitelist) {
+function cleanWhitelist(whitelist) {
   // var log = warn;
   // log('cleanWhitelist', whitelist);
 
@@ -410,8 +410,8 @@ function cleanWhitelist (whitelist) {
 async function discardEligibleTab(tab, options, tempWhitelist = null) {
   // log('discardEligibleTab', tab.url);
   if (!(await isExcluded(tab, options, tempWhitelist) &&
-      !(options[storage.ONLINE_CHECK] && !navigator.onLine) &&
-      !(options[storage.BATTERY_CHECK] && chargingMode))) {
+    !(options[storage.ONLINE_CHECK] && !navigator.onLine) &&
+    !(options[storage.BATTERY_CHECK] && chargingMode))) {
     // log('discardEligibleTab', tab.index, tab.id);
     discardOrSuspendTab(tab, options[storage.SUSPEND_MODE]);
   }
@@ -425,7 +425,7 @@ function requestTabDiscard(tab, whichTabs, options = null, tempWhitelist = null)
   // log('requestTabDiscard', whichTabs);
 
   //safety check
-  if (typeof(tab) === 'undefined') { return; }
+  if (typeof (tab) === 'undefined') { return; }
 
   //if forcing tab discard then skip other checks
   if (whichTabs === 'all') {
@@ -464,7 +464,7 @@ function resetTabTimer(tab) {
     else if (!isDiscarded(tab) && !tab.active && !isSpecialTab(tab)) {
       log('Resetting timer for tab: ' + tab.id);
       const whenToDiscard = Math.round(Date.now() + (parseFloat(discardTime) * 1000 * 60));
-      chrome.alarms.create(String(tab.id), {when: whenToDiscard});
+      chrome.alarms.create(String(tab.id), { when: whenToDiscard });
     }
     else {
       // log("Skipping tab timer reset: ",tab);
@@ -511,7 +511,7 @@ function discardOrSuspendTab(tab, fSuspend = null) {
 }
 
 function whitelistHighlightedTab() {
-  chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     // log('whitelistHighlightedTab');
     if (tabs.length > 0 && tabs[0].url) {
 
@@ -529,7 +529,7 @@ function whitelistHighlightedTab() {
 }
 
 function unwhitelistHighlightedTab() {
-  chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     if (tabs.length > 0) {
       removeFromWhitelist(tabs[0].url);
     }
@@ -537,7 +537,7 @@ function unwhitelistHighlightedTab() {
 }
 
 function temporarilyWhitelistHighlightedTab() {
-  chrome.tabs.query({active: true, currentWindow: true}, async function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true }, async function (tabs) {
     if (tabs.length > 0 && tabs[0].id) {
       const tempWhitelist = await getTemporaryWhitelist();
       tempWhitelist[tabs[0].id] = 1;
@@ -547,7 +547,7 @@ function temporarilyWhitelistHighlightedTab() {
 }
 
 function undoTemporarilyWhitelistHighlightedTab() {
-  chrome.tabs.query({active: true, currentWindow: true}, async function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true }, async function (tabs) {
     if (tabs.length > 0 && tabs[0].id) {
       const tempWhitelist = await getTemporaryWhitelist();
 
@@ -563,7 +563,7 @@ function undoTemporarilyWhitelistHighlightedTab() {
  * @param {'suspend'|null} fSuspend
  */
 function discardHighlightedTab(fSuspend = null) {
-  chrome.tabs.query({active: true, currentWindow: true, discarded: false}, async (tabs) => {
+  chrome.tabs.query({ active: true, currentWindow: true, discarded: false }, async (tabs) => {
     if (tabs.length > 0) {
       var tabToDiscard = tabs[0];
 
@@ -594,7 +594,7 @@ function discardHighlightedTab(fSuspend = null) {
 }
 
 function reloadHighlightedTab() {
-  chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     if (tabs.length > 0 && isDiscarded(tabs[0])) {
       reloadTab(tabs[0]);
     }
@@ -610,9 +610,9 @@ async function discardAllTabs(whichTabs) {
   // Retrieve the tempWhitelist and options once before looping, to avoid each loop doing so
   const tempWhitelist = await getTemporaryWhitelist();
   storage.getOptions(function (options) {
-    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       var curWindowId = tabs[0].windowId;
-      chrome.windows.get(curWindowId, {populate: true}, function(curWindow) {
+      chrome.windows.get(curWindowId, { populate: true }, function (curWindow) {
         curWindow.tabs?.forEach(function (tab) {
           if (!tab.active) {
             requestTabDiscard(tab, whichTabs, options, tempWhitelist);
@@ -682,9 +682,9 @@ async function discardAllTabsInAllWindows(whichTabs) {
 }
 
 function reloadAllTabs() {
-  chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     var curWindowId = tabs[0].windowId;
-    chrome.windows.get(curWindowId, {populate: true}, function(curWindow) {
+    chrome.windows.get(curWindowId, { populate: true }, function (curWindow) {
       curWindow.tabs?.forEach(function (currentTab) {
         if (isDiscarded(currentTab)) {
           reloadTab(currentTab);
@@ -710,7 +710,7 @@ function reloadAllTabsInAllWindows() {
  */
 function discardSelectedTabs(fSuspend = null) {
 
-  chrome.tabs.query({highlighted: true, lastFocusedWindow: true}, (selectedTabs) => {
+  chrome.tabs.query({ highlighted: true, lastFocusedWindow: true }, (selectedTabs) => {
     if (fSuspend) {
       selectedTabs.forEach((tab) => {
         discardOrSuspendTab(tab, 'suspend');
@@ -727,7 +727,7 @@ function discardSelectedTabs(fSuspend = null) {
 }
 
 function reloadSelectedTabs() {
-  chrome.tabs.query({highlighted: true, lastFocusedWindow: true}, (selectedTabs) => {
+  chrome.tabs.query({ highlighted: true, lastFocusedWindow: true }, (selectedTabs) => {
     selectedTabs.forEach(function (tab) {
       if (isDiscarded(tab)) {
         reloadTab(tab);
@@ -764,16 +764,16 @@ function reloadTab(tab) {
  * @param {chrome.tabs.Tab}     tab
  */
 function requestTabInfo(tab, callback) {
-    // log('requestTabInfo');
+  // log('requestTabInfo');
 
   var info = {
-      windowId  : 0,
-      tabId     : 0,
-      tabUrl    : '',
-      groupId   : 0,
-      pinned    : false,
-      status    : 'unknown',
-      timerUp   : '-'
+    windowId: 0,
+    tabId: 0,
+    tabUrl: '',
+    groupId: 0,
+    pinned: false,
+    status: 'unknown',
+    timerUp: '-'
   };
 
   chrome.alarms.get(String(tab.id), function (alarm) {
@@ -783,10 +783,10 @@ function requestTabInfo(tab, callback) {
     }
 
     info.windowId = tab.windowId;
-    info.tabId    = tab.id  ?? 0;
-    info.tabUrl   = tab.url ?? '';
-    info.groupId  = tab.groupId;
-    info.pinned   = tab.pinned;
+    info.tabId = tab.id ?? 0;
+    info.tabUrl = tab.url ?? '';
+    info.groupId = tab.groupId;
+    info.pinned = tab.pinned;
 
     if (isDiscarded(tab)) {
       info.status = 'discarded';
@@ -850,27 +850,27 @@ function processActiveTabStatus(tab, callback) {
     if (checkWhiteList(tab.url, options[storage.WHITELIST])) {
       status = 'whitelisted';
 
-    //check temporary whitelist
+      //check temporary whitelist
     } else if (await checkTemporaryWhiteList(tab.id)) {
       status = 'tempWhitelist';
 
-    //check pinned tab
+      //check pinned tab
     } else if (options[storage.IGNORE_PINNED] && tab.pinned) {
       status = 'pinned';
 
-    //check audible tab
+      //check audible tab
     } else if (options[storage.IGNORE_AUDIO] && tab.audible) {
       status = 'audible';
 
-    //check never discard
+      //check never discard
     } else if (options[storage.DISCARD_TIME] === "0") {
       status = 'never';
 
-    //check running on battery
+      //check running on battery
     } else if (options[storage.BATTERY_CHECK] && chargingMode) {
       status = 'charging';
 
-    //check internet connectivity
+      //check internet connectivity
     } else if (options[storage.ONLINE_CHECK] && !navigator.onLine) {
       status = 'noConnectivity';
     }
@@ -881,7 +881,7 @@ function processActiveTabStatus(tab, callback) {
 //change the icon to either active or inactive
 function updateIcon(status) {
   var icon = status !== 'normal' ? extensionPausedIcon : extensionActiveIcon;
-  chrome.action.setIcon({path: icon});
+  chrome.action.setIcon({ path: icon });
 }
 
 
@@ -892,130 +892,130 @@ function messageRequestListener(request, sender, sendResponse) {
 
   switch (request.action) {
 
-  case 'requestCurrentOptions':
-    storage.getOptions(function (options) {
-      // log('requestCurrentOptions', options);
-      sendResponse(options);
-    });
-    break;
+    case 'requestCurrentOptions':
+      storage.getOptions(function (options) {
+        // log('requestCurrentOptions', options);
+        sendResponse(options);
+      });
+      break;
 
-  case 'setOptions':
-    log('setOptions', request.options);
-    storage.setOptions(request.options, () => {
-      sendResponse();
-    });
-    break;
+    case 'setOptions':
+      log('setOptions', request.options);
+      storage.setOptions(request.options, () => {
+        sendResponse();
+      });
+      break;
 
-  case 'cleanWhitelist':
-    log('cleanWhitelist')
-    sendResponse({value: cleanWhitelist(request.value)});
-    break;
+    case 'cleanWhitelist':
+      log('cleanWhitelist')
+      sendResponse({ value: cleanWhitelist(request.value) });
+      break;
 
-  case 'requestCurrentTabInfo':
-    chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-      if (tabs.length > 0) {
-        requestTabInfo(tabs[0], function(info) {
-          log('requestCurrentTabInfo', info);
-          sendResponse(info);
-        });
+    case 'requestCurrentTabInfo':
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        if (tabs.length > 0) {
+          requestTabInfo(tabs[0], function (info) {
+            log('requestCurrentTabInfo', info);
+            sendResponse(info);
+          });
+        }
+      });
+      break;
+
+    case 'requestTabInfo':
+      requestTabInfo(request.tab, function (info) {
+        sendResponse(info);
+      });
+      break;
+
+    case 'requestDiscardStats':
+      log('requestDiscardStats');
+      requestDiscardStats((stats) => {
+        sendResponse(stats);
+      });
+      break;
+
+    case 'resetTabTimers':
+      chrome.tabs.query({}, function (tabs) {
+        for (var tab of tabs) {
+          resetTabTimer(tab);
+        }
+      });
+      break;
+
+    case 'updateContextMenuItems':
+      buildContextMenu(request.visible, request.discards);
+      break;
+
+    case 'discardOne':
+      discardHighlightedTab();
+      break;
+
+    case 'suspendOne':
+      discardHighlightedTab('suspend');
+      break;
+
+    case 'tempWhitelist':
+      temporarilyWhitelistHighlightedTab();
+      break;
+
+    case 'undoTempWhitelist':
+      undoTemporarilyWhitelistHighlightedTab();
+      break;
+
+    case 'whitelist':
+      whitelistHighlightedTab();
+      break;
+
+    case 'removeWhitelist':
+      unwhitelistHighlightedTab();
+      break;
+
+    case 'discardAll':
+      discardAllTabs('all');
+      break;
+
+    case 'discardAllEligible':
+      discardAllTabs('eligible');
+      break;
+
+    case 'reloadAll':
+      reloadAllTabs();
+      break;
+
+    case 'discardSelected':
+      discardSelectedTabs();
+      break;
+
+    case 'suspendSelected':
+      discardSelectedTabs('suspend');
+      break;
+
+    case 'reloadSelected':
+      reloadSelectedTabs();
+      break;
+
+    case 'openOptionsTab':
+      openTab('options');
+      break;
+
+    case 'openDiscardsTab':
+      openTab('discards');
+      break;
+
+    case 'openProfilerTab':
+      openTab('profiler');
+      break;
+
+    case 'debugReload':
+      if (DEBUG) {
+        chrome.runtime.reload();
       }
-    });
-    break;
+      break;
 
-  case 'requestTabInfo':
-    requestTabInfo(request.tab, function(info) {
-      sendResponse(info);
-    });
-    break;
-
-  case 'requestDiscardStats':
-    log('requestDiscardStats');
-    requestDiscardStats((stats) => {
-      sendResponse(stats);
-    });
-    break;
-
-  case 'resetTabTimers':
-    chrome.tabs.query({}, function (tabs) {
-      for (var tab of tabs) {
-        resetTabTimer(tab);
-      }
-    });
-    break;
-
-  case 'updateContextMenuItems':
-    buildContextMenu(request.visible, request.discards);
-    break;
-
-  case 'discardOne':
-    discardHighlightedTab();
-    break;
-
-  case 'suspendOne':
-    discardHighlightedTab('suspend');
-    break;
-
-  case 'tempWhitelist':
-    temporarilyWhitelistHighlightedTab();
-    break;
-
-  case 'undoTempWhitelist':
-    undoTemporarilyWhitelistHighlightedTab();
-    break;
-
-  case 'whitelist':
-    whitelistHighlightedTab();
-    break;
-
-  case 'removeWhitelist':
-    unwhitelistHighlightedTab();
-    break;
-
-  case 'discardAll':
-    discardAllTabs('all');
-    break;
-
-  case 'discardAllEligible':
-    discardAllTabs('eligible');
-    break;
-
-  case 'reloadAll':
-    reloadAllTabs();
-    break;
-
-  case 'discardSelected':
-    discardSelectedTabs();
-    break;
-
-  case 'suspendSelected':
-    discardSelectedTabs('suspend');
-    break;
-
-  case 'reloadSelected':
-    reloadSelectedTabs();
-    break;
-
-  case 'openOptionsTab':
-    openTab('options');
-    break;
-
-  case 'openDiscardsTab':
-    openTab('discards');
-    break;
-
-  case 'openProfilerTab':
-    openTab('profiler');
-    break;
-
-  case 'debugReload':
-    if (DEBUG) {
-      chrome.runtime.reload();
-    }
-    break;
-
-  default:
-    warn(`Unknown message action: ${request.action}`);
-    break;
+    default:
+      warn(`Unknown message action: ${request.action}`);
+      break;
   }
   return true;
 }
@@ -1023,7 +1023,7 @@ function messageRequestListener(request, sender, sendResponse) {
 
 //HANDLERS FOR KEYBOARD SHORTCUTS
 
-function commandListener (command) {
+function commandListener(command) {
   log('commandListener', command);
 
   if (command === '1-discard-tab') {
@@ -1102,21 +1102,21 @@ function buildContextMenu(showContextMenu, showDiscards) {
     // discard present tab
     chrome.contextMenus.create({
       id: "discard-tab",
-      title: "Discard this tab",
+      title: chrome.i18n.getMessage('contextMenuDiscardTab'),
       contexts: allContexts
     });
 
     // Add present tab to temporary whitelist
     chrome.contextMenus.create({
       id: "dont-discard-for-now",
-      title: "Pause discarding this tab",
+      title: chrome.i18n.getMessage('contextMenuPauseDiscard'),
       contexts: allContexts
     });
 
     // Add present tab to permanent whitelist
     chrome.contextMenus.create({
       id: "never-discard",
-      title: "Never discard this site",
+      title: chrome.i18n.getMessage('contextMenuNeverDiscard'),
       contexts: allContexts
     });
 
@@ -1129,21 +1129,21 @@ function buildContextMenu(showContextMenu, showDiscards) {
     // discard all the tabs
     chrome.contextMenus.create({
       id: "discard-others",
-      title: "Discard all other tabs",
+      title: chrome.i18n.getMessage('contextMenuDiscardOthers'),
       contexts: allContexts
     });
 
     // restore all the tabs
     chrome.contextMenus.create({
       id: "reload-all",
-      title: "Restore all discarded tabs",
+      title: chrome.i18n.getMessage('contextMenuRestoreAll'),
       contexts: allContexts
     });
 
     //Open settings page
     chrome.contextMenus.create({
       id: "settings",
-      title: "Settings",
+      title: chrome.i18n.getMessage('settings'),
       contexts: allContexts
     });
 

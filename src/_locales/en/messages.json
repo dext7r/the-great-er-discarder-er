@@ -1,0 +1,609 @@
+{
+  "extensionName": {
+    "message": "The Great-er Tab Discarder"
+  },
+  "extensionDescription": {
+    "message": "Compatible with latest Chrome! Helps your browser load and run faster by freeing up memory and resources used by old inactive tabs."
+  },
+  "discardActiveTab": {
+    "message": "Discard active tab"
+  },
+  "suspendActiveTab": {
+    "message": "Suspend active tab"
+  },
+  "discardAllTabs": {
+    "message": "Discard all tabs in active window"
+  },
+  "reloadAllTabs": {
+    "message": "Reload all tabs in active window"
+  },
+  "discardAllWindows": {
+    "message": "Discard all tabs in all windows"
+  },
+  "reloadAllWindows": {
+    "message": "Reload all tabs in all windows"
+  },
+  "popupTitle": {
+    "message": "The Great-er Tab Discarder | Popup"
+  },
+  "currentStatus": {
+    "message": "[current status]"
+  },
+  "discardThisTab": {
+    "message": "Discard this tab"
+  },
+  "suspendThisTab": {
+    "message": "Suspend this tab"
+  },
+  "pauseDiscarding": {
+    "message": "Pause"
+  },
+  "pauseDiscardingThisTab": {
+    "message": "ing this tab"
+  },
+  "neverDiscard": {
+    "message": "Never"
+  },
+  "neverDiscardThisSite": {
+    "message": "this site"
+  },
+  "discardSelectedTabs": {
+    "message": "Discard selected tabs"
+  },
+  "suspendSelectedTabs": {
+    "message": "Suspend selected tabs"
+  },
+  "reloadSelectedTabs": {
+    "message": "Reload selected tabs"
+  },
+  "thisWindow": {
+    "message": "This window"
+  },
+  "discardAllEligible": {
+    "message": "Discard all eligible tabs"
+  },
+  "discardAllOther": {
+    "message": "Discard all other tabs"
+  },
+  "reloadAllDiscarded": {
+    "message": "Reload all discarded tabs"
+  },
+  "settings": {
+    "message": "Settings"
+  },
+  "tabProfiler": {
+    "message": "Tab Profiler"
+  },
+  "reload": {
+    "message": "Reload"
+  },
+  "statusNormal": {
+    "message": "This tab can be $MODE$ed automatically.",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "Discard"
+      }
+    }
+  },
+  "statusSpecial": {
+    "message": "This tab cannot be $MODE$ed.",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "Discard"
+      }
+    }
+  },
+  "statusWhitelisted": {
+    "message": "Site whitelisted. <a href=\"#\">Remove from whitelist</a>"
+  },
+  "statusAudible": {
+    "message": "This tab is playing audio."
+  },
+  "statusPinned": {
+    "message": "This tab has been pinned."
+  },
+  "statusTempWhitelist": {
+    "message": "Tab $MODE$ing paused. <a href=\"#\">Unpause</a>",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "Discard"
+      }
+    }
+  },
+  "statusNever": {
+    "message": "Automatic $MODE$ing is disabled.",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "Discard"
+      }
+    }
+  },
+  "statusNoConnectivity": {
+    "message": "No network connection."
+  },
+  "statusCharging": {
+    "message": "Connected to power source."
+  },
+  "skipText": {
+    "message": "Skip $EXCLUDES$ tabs",
+    "placeholders": {
+      "excludes": {
+        "content": "$1",
+        "example": "pinned and audio"
+      }
+    }
+  },
+  "skipPinned": {
+    "message": "pinned"
+  },
+  "skipAudio": {
+    "message": "audio"
+  },
+  "and": {
+    "message": " and "
+  },
+  "contextMenuDiscardTab": {
+    "message": "Discard this tab"
+  },
+  "contextMenuPauseDiscard": {
+    "message": "Pause discarding this tab"
+  },
+  "contextMenuNeverDiscard": {
+    "message": "Never discard this site"
+  },
+  "contextMenuDiscardOthers": {
+    "message": "Discard all other tabs"
+  },
+  "contextMenuRestoreAll": {
+    "message": "Restore all discarded tabs"
+  },
+  "optionsTitle": {
+    "message": "The Great-er Tab Discarder | General Settings"
+  },
+  "generalSettings": {
+    "message": "General Settings"
+  },
+  "suspendSettings": {
+    "message": "Suspend Settings"
+  },
+  "keyboardShortcuts": {
+    "message": "Keyboard Shortcuts"
+  },
+  "migrateTabs": {
+    "message": "Migrate Tabs"
+  },
+  "aboutSupport": {
+    "message": "About / Support"
+  },
+  "tabsAutomatically": {
+    "message": "tabs automatically"
+  },
+  "discardTabsAfter": {
+    "message": "tabs after:"
+  },
+  "never": {
+    "message": "Never"
+  },
+  "minutes": {
+    "message": "mins"
+  },
+  "hour": {
+    "message": "hour"
+  },
+  "hours": {
+    "message": "hours"
+  },
+  "day": {
+    "message": "day"
+  },
+  "days": {
+    "message": "days"
+  },
+  "doNotDiscardPinned": {
+    "message": "Do not $MODE$ pinned tabs",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "Discard"
+      }
+    }
+  },
+  "doNotDiscardAudio": {
+    "message": "Do not $MODE$ tabs that are playing audio",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "Discard"
+      }
+    }
+  },
+  "onlineCheck": {
+    "message": "Only auto-$MODE$ if connected to the internet",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "Discard"
+      }
+    }
+  },
+  "batteryCheck": {
+    "message": "Only auto-$MODE$ if running on battery",
+    "placeholders": {
+      "mode": {
+        "content": "$1",
+        "example": "Discard"
+      }
+    }
+  },
+  "browserStartup": {
+    "message": "Browser Startup"
+  },
+  "preventReloading": {
+    "message": "Prevent reloading all tabs"
+  },
+  "discardAtStartup": {
+    "message": "( Discards all tabs at startup )"
+  },
+  "whitelist": {
+    "message": "Whitelist"
+  },
+  "other": {
+    "message": "Other"
+  },
+  "addContextMenu": {
+    "message": "Add The Great-$ER$ Tab Discarder to right-click context menu",
+    "placeholders": {
+      "er": {
+        "content": "$1",
+        "example": "er"
+      }
+    }
+  },
+  "syncSettings": {
+    "message": "Sync settings between different systems"
+  },
+  "syncNote": {
+    "message": "Turning this on will overwrite settings on all synced systems"
+  },
+  "enableDebugLinks": {
+    "message": "Enable debug links on context and popup menus"
+  },
+  "settingsAutoSaved": {
+    "message": "Settings are automatically saved."
+  },
+  "suspendedTitle": {
+    "message": "Suspended"
+  },
+  "suspendedPageTitle": {
+    "message": "This tab is Suspended."
+  },
+  "clickToRestore": {
+    "message": "Click the link above restore this tab."
+  },
+  "customizePageTitle": {
+    "message": "Customize Page Title"
+  },
+  "defaultOption": {
+    "message": "(default)"
+  },
+  "suspendedSuffix": {
+    "message": "... | Suspended"
+  },
+  "watermarkText": {
+    "message": "Click anywhere to restore this tab"
+  },
+  "discard": {
+    "message": "Discard"
+  },
+  "suspend": {
+    "message": "Suspend"
+  },
+  "aboutTitle": {
+    "message": "The Great-er Tab Discarder | About / Support"
+  },
+  "helpOthersFind": {
+    "message": "Help others find the extension"
+  },
+  "submitRating": {
+    "message": "Submit a ⭐⭐⭐⭐⭐ rating in the App Store(s) if you like the extension!"
+  },
+  "chromeWebStore": {
+    "message": "Chrome Web Store"
+  },
+  "edgeAddons": {
+    "message": "Edge Add-ons"
+  },
+  "reportIssues": {
+    "message": "Please report issues on"
+  },
+  "whatsNew": {
+    "message": "What's New"
+  },
+  "fullChangeLog": {
+    "message": "Full change log on"
+  },
+  "shortcutsTitle": {
+    "message": "The Great-er Tab Discarder | Keyboard Shortcuts"
+  },
+  "shortcutsDescription": {
+    "message": "Configure keyboard shortcuts in Chrome's Extension settings"
+  },
+  "openChromeShortcuts": {
+    "message": "Open Chrome Shortcuts"
+  },
+  "migrateTitle": {
+    "message": "The Great-er Tab Discarder | Migrate Tabs"
+  },
+  "migrateDescription": {
+    "message": "Migrate suspended tabs from other extensions"
+  },
+  "suspendSettingsTitle": {
+    "message": "The Great-er Tab Discarder | Suspended Page Settings"
+  },
+  "suspendedPageSettings": {
+    "message": "Suspended Page Settings"
+  },
+  "clickAnywhere": {
+    "message": "Click anywhere on the Suspended page to restore it"
+  },
+  "reloadSuspended": {
+    "message": "Reload the Suspended page to restore it"
+  },
+  "modifyFavicon": {
+    "message": "Modify the favicon:"
+  },
+  "none": {
+    "message": "None"
+  },
+  "dim": {
+    "message": "Dim"
+  },
+  "moreComing": {
+    "message": "More coming soon!"
+  },
+  "migrateFromOther": {
+    "message": "Migrate from other extensions"
+  },
+  "makeBackup": {
+    "message": "Make a backup copy of your tabs."
+  },
+  "exportFeature": {
+    "message": "Some \"Suspender\" extensions have an export feature built-in."
+  },
+  "exportFresh": {
+    "message": "Export a fresh copy."
+  },
+  "notFoundExtension": {
+    "message": "If you're using a tab Suspending browser extension, I don't recognizing it."
+  },
+  "submitIssue": {
+    "message": "submit a new issue"
+  },
+  "includeExtensionName": {
+    "message": "The name of the extension you're using"
+  },
+  "includeExampleURL": {
+    "message": "An example URL of a suspended tab from your browser"
+  },
+  "migrateBtn": {
+    "message": "Migrate"
+  },
+  "andReSuspend": {
+    "message": "and re-Suspend"
+  },
+  "or": {
+    "message": "or"
+  },
+  "discardBtn": {
+    "message": "Discard"
+  },
+  "toNativeDiscard": {
+    "message": "to native Discard"
+  },
+  "migrateVsConvert": {
+    "message": "What's \"Migrate\" vs \"Convert\" ?"
+  },
+  "migrateExplanation": {
+    "message": "Migrate simulates Suspended tabs like you might be used to. It's old-school."
+  },
+  "convertExplanation": {
+    "message": "Convert will un-Suspend your tabs, then tell your browser to immediately Discard them."
+  },
+  "preferredOption": {
+    "message": "This is the preferred option"
+  },
+  "removesPlaceholder": {
+    "message": ", native to the browser, but removes your \"Suspended\" placeholder page."
+  },
+  "remapKeys": {
+    "message": "Remap keys"
+  },
+  "notSet": {
+    "message": "(not set)"
+  },
+  "profilerTitle": {
+    "message": "The Great-er Tab Discarder | Profiler"
+  },
+  "refresh": {
+    "message": "Refresh"
+  },
+  "enableTabGroups": {
+    "message": "Enable Tab Groups"
+  },
+  "window": {
+    "message": "Window"
+  },
+  "tabGroup": {
+    "message": "Tab Group"
+  },
+  "title": {
+    "message": "Title"
+  },
+  "timer": {
+    "message": "Timer (s)"
+  },
+  "status": {
+    "message": "Status"
+  },
+  "pin": {
+    "message": "Pin"
+  },
+  "helpOthersText": {
+    "message": "Help others find the extension"
+  },
+  "submitRatingText": {
+    "message": "Submit a ⭐⭐⭐⭐⭐ rating in the App Store(s) if you like the extension!"
+  },
+  "reportIssuesText": {
+    "message": "Please report issues on"
+  },
+  "github": {
+    "message": "GitHub"
+  },
+  "whatsNewTitle": {
+    "message": "What's New"
+  },
+  "version140": {
+    "message": "v1.4.0 - Jun 2025"
+  },
+  "newOptionsForSuspended": {
+    "message": "New: options for Suspended Tabs"
+  },
+  "faviconDimming": {
+    "message": "favicon dimming"
+  },
+  "restoreByClick": {
+    "message": "restore a suspended tab by clicking anywhere on the page"
+  },
+  "restoreByReload": {
+    "message": "restore a suspended tab by Reload"
+  },
+  "fixSuspendedBlocked": {
+    "message": "Fix: Suspended tabs from being blocked by Chrome when directly opened"
+  },
+  "fixFaviconLoading": {
+    "message": "Fix: Suspended tab favicons not loading on initial browser launch"
+  },
+  "faviconNote": {
+    "message": "NOTE: favicons must be in the browser's cache to load correctly, until I finish adding a local cache"
+  },
+  "newPopupDetails": {
+    "message": "New: details on the main extension popup"
+  },
+  "showTabCounts": {
+    "message": "Show Discarded and Suspended tab counts"
+  },
+  "showShortcuts": {
+    "message": "Show assigned keyboard shortcuts"
+  },
+  "automaticSaving": {
+    "message": "New: automatic options saving, and removed the Save and Cancel buttons"
+  },
+  "backgroundModules": {
+    "message": "Update: background code uses modules for easier integration"
+  },
+  "version130": {
+    "message": "v1.3.0 - Apr 2025"
+  },
+  "newSuspending": {
+    "message": "New: Suspending Tabs has been added"
+  },
+  "customTitles": {
+    "message": "New: Suspended Tabs can have their tab titles customized with a prefix"
+  },
+  "updateMigrating": {
+    "message": "Update: Migrating tabs lets you view and select which tabs to Migrate or Convert"
+  },
+  "tinySuspenderSupport": {
+    "message": "New: Tiny Suspender suspend.html tabs can be migrated"
+  },
+  "migrationFix": {
+    "message": "Fix: Tab migration to handle the different formats better, which should prevent looping"
+  },
+  "fullChangeLogText": {
+    "message": "Full change log on"
+  },
+  "extensionUsesDb": {
+    "message": "This extension uses the indexedDb wrapper"
+  },
+  "writtenBy": {
+    "message": "written by Aaron Powell."
+  },
+  "audible": {
+    "message": "audible"
+  },
+  "discarded": {
+    "message": "discarded"
+  },
+  "suspended": {
+    "message": "suspended"
+  },
+  "unknown": {
+    "message": "unknown"
+  },
+  "windowNumber": {
+    "message": "Window $NUMBER$",
+    "placeholders": {
+      "number": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "foundTabs": {
+    "message": "Found $COUNT$ suspended tab$PLURAL$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      },
+      "plural": {
+        "content": "$2",
+        "example": "s"
+      }
+    }
+  },
+  "fromExtensions": {
+    "message": "from $COUNT$ extension$PLURAL$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "2"
+      },
+      "plural": {
+        "content": "$2",
+        "example": "s"
+      }
+    }
+  },
+  "migrateCount": {
+    "message": "Migrate $COUNT$ tab$PLURAL$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      },
+      "plural": {
+        "content": "$2",
+        "example": "s"
+      }
+    }
+  },
+  "convertCount": {
+    "message": "Convert $COUNT$ tab$PLURAL$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      },
+      "plural": {
+        "content": "$2",
+        "example": "s"
+      }
+    }
+  }
+}
